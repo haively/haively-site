@@ -1,7 +1,10 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/images/*", "/*.{css,js,png,jpg,jpeg,gif,svg,webp,ico,woff,woff2,txt,xml,json}"]
+    "exclude": [
+      "/vendor/*",
+      "/*.{css,js,png,jpg,jpeg,gif,svg,webp,ico,woff,woff2,txt,xml,json}"
+    ]
   },
   "responseOverrides": {
     "404": {
@@ -17,12 +20,28 @@
   },
   "routes": [
     {
-      "route": "/assets/*",
-      "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
+      "route": "/vendor/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/support.js",
+      "headers": {
+        "Cache-Control": "public, max-age=3600"
+      }
     },
     {
       "route": "/index.html",
-      "headers": { "Cache-Control": "no-cache" }
+      "headers": {
+        "Cache-Control": "no-cache"
+      }
+    },
+    {
+      "route": "/",
+      "headers": {
+        "Cache-Control": "no-cache"
+      }
     }
   ]
 }

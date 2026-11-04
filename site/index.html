@@ -1,18 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>haively</title>
-  <link rel="canonical" href="https://haively.com/">
-  <style>
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center;
-           font-family: Georgia, serif; background: #f7f7f5; color: #2b2b33; }
-    h1 { font-weight: 400; letter-spacing: -0.02em; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haively — Software, built properly.</title>
+<meta name="description" content="Haively is a technology company. We build our own products and take on software and IT contracts for startups, enterprises and government programs.">
+<link rel="canonical" href="https://haively.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='6' y='6' width='24' height='88' fill='%231B1A17'/%3E%3Crect x='70' y='6' width='24' height='88' fill='%231B1A17'/%3E%3Cpolygon points='30,66 70,30 70,54 30,90' fill='%234A6FA5'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://haively.com/">
+<meta property="og:title" content="Haively — Software, built properly.">
+<meta property="og:description" content="Haively is a technology company. We build our own products and take on software and IT contracts for startups, enterprises and government programs.">
+<meta name="theme-color" content="#F4F1EA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>
+  // Serve React from this site instead of unpkg.com (same versions the design runtime pins).
+  window.__resources = {
+    "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "/vendor/react.production.min.js",
+    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "/vendor/react-dom.production.min.js"
+  };
+</script>
+<script src="/support.js"></script>
 </head>
 <body>
-  <!-- PLACEHOLDER: replace this file with the exported Haively Website Design -->
-  <h1>haively</h1>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Young+Serif&amp;display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F4F1EA;color:#1B1A17;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;text-size-adjust:100%}*{box-sizing:border-box}a{color:#4A6FA5;text-decoration:none}a:hover{color:#1B1A17}input,textarea,select{font:inherit}@keyframes hvBlink{0%,49%{opacity:1}50%,100%{opacity:0}}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F4F1EA">
+  <header style="position:sticky;top:0;z-index:10;background:rgba(244,241,234,.92);backdrop-filter:blur(10px);border-bottom:1px solid #D9D4C8">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,56px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <button onClick="{{ goHome }}" aria-label="Haively home" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:10px"><svg viewBox="0 0 100 100" style="width:28px;height:28px"><rect x="6" y="6" width="24" height="88" fill="#1B1A17"></rect><rect x="70" y="6" width="24" height="88" fill="#1B1A17"></rect><polygon points="30,66 70,30 70,54 30,90" fill="#4A6FA5"></polygon></svg><span style="font:700 24px 'Hanken Grotesk',sans-serif;letter-spacing:-.035em">Haively</span></button>
+      <nav style="display:flex;align-items:center;gap:clamp(14px,2.6vw,36px);font-size:15px;font-weight:500;flex-wrap:wrap;justify-content:flex-end">
+        <button onClick="{{ goServices }}" style="all:unset;cursor:pointer;color:{{ nav.services }}" style-hover="color:#4A6FA5">Services</button>
+        <button onClick="{{ goProducts }}" style="all:unset;cursor:pointer;color:{{ nav.products }}" style-hover="color:#4A6FA5">Products</button>
+        <button onClick="{{ goAbout }}" style="all:unset;cursor:pointer;color:{{ nav.about }}" style-hover="color:#4A6FA5">About</button>
+        <button onClick="{{ goContact }}" style="all:unset;cursor:pointer;background:#1B1A17;color:#F4F1EA;padding:10px 18px;border-radius:999px" style-hover="background:#4A6FA5">Contact</button>
+      </nav>
+    </div>
+  </header>
+
+  <main style="flex:1">
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,10vw,140px) clamp(20px,4vw,56px) 80px;display:flex;flex-direction:column;gap:48px">
+      <h1 aria-label="Software, built properly." style="margin:0;font:400 clamp(52px,9vw,136px)/.95 'Instrument Serif',serif;letter-spacing:-.02em;max-width:12ch;display:grid">{{ heroType }}</h1>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;align-items:end;border-top:1px solid #1B1A17;padding-top:28px">
+        <p style="margin:0;font-size:clamp(18px,1.7vw,22px);line-height:1.5;max-width:40ch;text-wrap:pretty">Haively is a technology company. We build our own products and take on software and IT contracts for startups, enterprises and government programs.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button onClick="{{ goContact }}" style="all:unset;cursor:pointer;background:#4A6FA5;color:#FFFFFF;padding:16px 26px;border-radius:999px;font-weight:600;font-size:16px" style-hover="background:#1B1A17">Send an inquiry</button>
+          <button onClick="{{ goServices }}" style="all:unset;cursor:pointer;border:1px solid #1B1A17;padding:15px 26px;border-radius:999px;font-weight:500;font-size:16px" style-hover="background:#1B1A17;color:#F4F1EA">Our services</button>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,4vw,56px) 96px;display:flex;flex-direction:column;gap:56px">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5E5A52">Our approach</span>
+        <h2 style="margin:0;font:400 clamp(40px,5.4vw,76px)/1 'Instrument Serif',serif;letter-spacing:-.015em;max-width:18ch;text-wrap:balance">Apps are easy to build. Hard to get <em style="color:#4A6FA5">right</em>.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:48px">
+        <div style="display:flex;flex-direction:column;gap:14px;border-top:2px solid #4A6FA5;padding-top:24px">
+          <span style="font:400 30px/1.1 'Instrument Serif',serif">Useful, not just possible</span>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:#5E5A52;text-wrap:pretty">New tools have made software easy to make. They haven't made it easier to make something people need. Before we write code, we test the problem, the users and the outcome, so what we ship earns its place.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;border-top:2px solid #4A6FA5;padding-top:24px">
+          <span style="font:400 30px/1.1 'Instrument Serif',serif">Engineered to stay up</span>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:#5E5A52;text-wrap:pretty">A polished front end is half a product. We design the backend for the load you'll have next year: redundant infrastructure, automated failover, monitoring and tested recovery, so your product is available when your users need it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1280px;margin:0 auto;padding:40px clamp(20px,4vw,56px) 112px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:24px"><h2 style="margin:0;font:400 clamp(34px,4vw,52px)/1 'Instrument Serif',serif">What we do</h2><button onClick="{{ goServices }}" style="all:unset;cursor:pointer;font-weight:500;color:#4A6FA5" style-hover="color:#1B1A17">All services →</button></div>
+      <div style="display:flex;flex-direction:column">
+        <button onClick="{{ goServices }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid #D9D4C8" style-hover="background:#EDE9DF"><span style="font:italic 400 28px 'Instrument Serif',serif;color:#4A6FA5">01</span><span style="font:400 clamp(26px,3vw,40px)/1.05 'Instrument Serif',serif">Custom software</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">Web apps, portals and platforms built to spec.</span></button>
+        <button onClick="{{ goServices }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid #D9D4C8" style-hover="background:#EDE9DF"><span style="font:italic 400 28px 'Instrument Serif',serif;color:#4A6FA5">02</span><span style="font:400 clamp(26px,3vw,40px)/1.05 'Instrument Serif',serif">Mobile apps</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">iOS and Android, from prototype to store release.</span></button>
+        <button onClick="{{ goServices }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid #D9D4C8" style-hover="background:#EDE9DF"><span style="font:italic 400 28px 'Instrument Serif',serif;color:#4A6FA5">03</span><span style="font:400 clamp(26px,3vw,40px)/1.05 'Instrument Serif',serif">Cloud &amp; DevOps</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">Infrastructure, pipelines and monitoring that hold up.</span></button>
+        <button onClick="{{ goServices }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid #D9D4C8;border-bottom:1px solid #D9D4C8" style-hover="background:#EDE9DF"><span style="font:italic 400 28px 'Instrument Serif',serif;color:#4A6FA5">04</span><span style="font:400 clamp(26px,3vw,40px)/1.05 'Instrument Serif',serif">Staff augmentation</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">Senior engineers on your team or your contract.</span></button>
+      </div>
+    </section>
+
+    <section style="background:#1B1A17;color:#F4F1EA">
+      <div style="max-width:1280px;margin:0 auto;padding:112px clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:64px;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <span style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#A9A396">From our studio</span>
+          <h2 style="margin:0;font:400 clamp(40px,5vw,68px)/1 'Instrument Serif',serif;text-wrap:balance">We build products, not just for clients.</h2>
+          <p style="margin:0;font-size:18px;line-height:1.6;color:#C9C3B6;max-width:44ch">Running our own software in production is how we keep our engineering sharp for every contract.</p>
+        </div>
+        <button onClick="{{ goProducts }}" style="all:unset;cursor:pointer;background:#EFECE6;color:#1F1B2D;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:24px" style-hover="transform:translateY(-3px)">
+          <div style="display:flex;flex-direction:column;gap:14px"><span style="font:400 42px 'Young Serif',serif;color:#5B4BC4;line-height:1">Trove</span><span style="font-size:16px;line-height:1.5;color:#3D3850">Scan a product, read the honest summary of its reviews, compare prices.</span><span style="font-size:14px;font-weight:600;color:#5B4BC4">Learn more →</span></div>
+          
+        </button>
+      </div>
+    </section>
+
+    <section style="max-width:1280px;margin:0 auto;padding:112px clamp(20px,4vw,56px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:48px">
+        <h2 style="margin:0;font:400 clamp(34px,4vw,52px)/1 'Instrument Serif',serif">How we engage</h2>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:400 26px 'Instrument Serif',serif">Fixed scope</span><span style="font-size:16px;line-height:1.6;color:#5E5A52">A defined deliverable, timeline and price.</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:400 26px 'Instrument Serif',serif">Retainer</span><span style="font-size:16px;line-height:1.6;color:#5E5A52">Ongoing engineering capacity, month to month.</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:400 26px 'Instrument Serif',serif">Subcontract</span><span style="font-size:16px;line-height:1.6;color:#5E5A52">Delivery under a prime, government or commercial.</span></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,56px) 64px">
+      <span style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5E5A52">Services</span>
+      <h1 style="margin:20px 0 0;font:400 clamp(48px,7vw,104px)/.98 'Instrument Serif',serif;letter-spacing:-.02em;max-width:14ch;text-wrap:balance">Four disciplines, <em style="color:#4A6FA5">one team</em>.</h1>
+    </section>
+    <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,56px) 112px;display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;padding:48px 0;border-top:1px solid #1B1A17">
+        <div style="display:flex;gap:20px;align-items:baseline"><span style="font:italic 400 32px 'Instrument Serif',serif;color:#4A6FA5">01</span><span style="font:400 clamp(34px,3.6vw,48px)/1 'Instrument Serif',serif">Custom software &amp; web apps</span></div>
+        <div style="display:flex;flex-direction:column;gap:20px"><p style="margin:0;font-size:18px;line-height:1.6">Discovery, architecture and full-stack development for business systems, portals, dashboards and SaaS products. Tested, documented and ready to hand over.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Architecture</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">APIs &amp; integrations</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Data migration</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Section 508</span></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;padding:48px 0;border-top:1px solid #1B1A17">
+        <div style="display:flex;gap:20px;align-items:baseline"><span style="font:italic 400 32px 'Instrument Serif',serif;color:#4A6FA5">02</span><span style="font:400 clamp(34px,3.6vw,48px)/1 'Instrument Serif',serif">Mobile apps</span></div>
+        <div style="display:flex;flex-direction:column;gap:20px"><p style="margin:0;font-size:18px;line-height:1.6">Consumer and field apps for iOS and Android, including offline support, camera and scanning, payments and store release management.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Cross-platform</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Native features</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Store submission</span></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;padding:48px 0;border-top:1px solid #1B1A17">
+        <div style="display:flex;gap:20px;align-items:baseline"><span style="font:italic 400 32px 'Instrument Serif',serif;color:#4A6FA5">03</span><span style="font:400 clamp(34px,3.6vw,48px)/1 'Instrument Serif',serif">Cloud &amp; DevOps</span></div>
+        <div style="display:flex;flex-direction:column;gap:20px"><p style="margin:0;font-size:18px;line-height:1.6">Migrations, infrastructure as code, CI/CD and observability on AWS, Azure or GCP, so releases are routine and costs stay visible.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Terraform</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Containers</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Pipelines</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Monitoring</span></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;padding:48px 0;border-top:1px solid #1B1A17;border-bottom:1px solid #1B1A17">
+        <div style="display:flex;gap:20px;align-items:baseline"><span style="font:italic 400 32px 'Instrument Serif',serif;color:#4A6FA5">04</span><span style="font:400 clamp(34px,3.6vw,48px)/1 'Instrument Serif',serif">Staff augmentation</span></div>
+        <div style="display:flex;flex-direction:column;gap:20px"><p style="margin:0;font-size:18px;line-height:1.6">Senior engineers who join your stand-ups and your repository, for commercial teams or as a subcontractor on government programs.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Full-stack</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Mobile</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">DevOps</span><span style="border:1px solid #CFC9BC;border-radius:999px;padding:6px 12px;font-size:14px;color:#5E5A52">Prime / sub</span></div></div>
+      </div>
+    </section>
+    <section style="background:#E9E4D8">
+      <div style="max-width:1280px;margin:0 auto;padding:96px clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:48px">
+        <h2 style="margin:0;font:400 clamp(34px,4vw,52px)/1 'Instrument Serif',serif">From first call to launch</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px">
+          <div style="display:flex;flex-direction:column;gap:10px;border-top:2px solid #4A6FA5;padding-top:20px"><span style="font:400 26px 'Instrument Serif',serif">Scope</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">A call, then a written proposal and estimate.</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px;border-top:2px solid #4A6FA5;padding-top:20px"><span style="font:400 26px 'Instrument Serif',serif">Plan</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">Architecture and milestones you approve.</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px;border-top:2px solid #4A6FA5;padding-top:20px"><span style="font:400 26px 'Instrument Serif',serif">Build</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">Two-week sprints, a working demo each time.</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px;border-top:2px solid #4A6FA5;padding-top:20px"><span style="font:400 26px 'Instrument Serif',serif">Ship</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">Release, documentation, then support.</span></div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isProducts }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,56px) 112px;display:flex;flex-direction:column;gap:64px">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5E5A52">Products</span>
+        <h1 style="margin:0;font:400 clamp(48px,7vw,104px)/.98 'Instrument Serif',serif;letter-spacing:-.02em;max-width:14ch;text-wrap:balance">Made at <em style="color:#4A6FA5">Haively</em>.</h1>
+      </div>
+      <div style="background:#EFECE6;border:1px solid #D9D4C8;border-radius:24px;padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:48px">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <span style="font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6E6880">Reviews app · In development</span>
+          <span style="font:400 clamp(52px,6vw,76px) 'Young Serif',serif;color:#5B4BC4;line-height:1">Trove</span>
+          <p style="margin:0;font-size:18px;line-height:1.6;color:#3D3850;max-width:42ch">Scan a product in the aisle. Trove summarizes what reviewers actually say, answers your questions about the reviews, and compares prices in store and online.</p>
+          <span style="align-self:flex-start;background:#5B4BC4;color:#FFFFFF;padding:13px 22px;border-radius:999px;font-weight:600;font-size:15px">Join the waitlist</span>
+        </div>
+        
+      </div>
+      <p style="margin:0;font:italic 400 24px 'Instrument Serif',serif;color:#5E5A52">More products in development.</p>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,56px) 96px;display:flex;flex-direction:column;gap:56px">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5E5A52">About</span>
+        <h1 style="margin:0;font:400 clamp(44px,6vw,88px)/1 'Instrument Serif',serif;letter-spacing:-.02em;max-width:18ch;text-wrap:balance">A product company that also takes on contracts.</h1>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;font-size:19px;line-height:1.65;border-top:1px solid #1B1A17;padding-top:32px">
+        <p style="margin:0">Haively builds its own digital products and delivers software and IT work for clients. Running products in production keeps our engineering honest, and client work keeps us close to real problems.</p>
+        <p style="margin:0;color:#5E5A52">We partner with startups, enterprises and government primes that need a dependable engineering team, whether that's a whole project or a few senior people.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px">
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:italic 400 30px 'Instrument Serif',serif;color:#4A6FA5">Ship working software.</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">Demos every sprint, not status reports.</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:italic 400 30px 'Instrument Serif',serif;color:#4A6FA5">Own the outcome.</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">One accountable team from scope to support.</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:italic 400 30px 'Instrument Serif',serif;color:#4A6FA5">Leave it better.</span><span style="font-size:16px;line-height:1.55;color:#5E5A52">Clean code, documentation, a real handover.</span></div>
+      </div>
+    </section>
+    <sc-if value="{{ showGov }}" hint-placeholder-val="{{ true }}">
+      <section style="background:#E9E4D8">
+        <div style="max-width:1280px;margin:0 auto;padding:80px clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px">
+          <h2 style="margin:0;font:400 clamp(30px,3.4vw,44px)/1.05 'Instrument Serif',serif">For procurement teams</h2>
+          <div style="display:flex;flex-direction:column;font-size:16px">
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #CFC9BC"><span style="color:#5E5A52">Legal name</span><span style="font-weight:500">Haively LLC</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #CFC9BC"><span style="color:#5E5A52">UEI</span><span style="font-weight:500">—</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #CFC9BC"><span style="color:#5E5A52">CAGE</span><span style="font-weight:500">—</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;font-size:16px">
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #CFC9BC"><span style="color:#5E5A52">NAICS 541511</span><span style="font-weight:500">Custom programming</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #CFC9BC"><span style="color:#5E5A52">NAICS 541512</span><span style="font-weight:500">Systems design</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #CFC9BC"><span style="color:#5E5A52">NAICS 541519</span><span style="font-weight:500">Other computer services</span></div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,56px) 112px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:72px">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <span style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5E5A52">Contact</span>
+        <h1 style="margin:0;font:400 clamp(48px,6vw,88px)/.98 'Instrument Serif',serif;letter-spacing:-.02em;text-wrap:balance">Let's talk about your <em style="color:#4A6FA5">project</em>.</h1>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#5E5A52;max-width:40ch">Every inquiry gets a reply within two business days.</p>
+        <a href="mailto:hello@haively.com" style="font:400 26px 'Instrument Serif',serif">hello@haively.com</a>
+      </div>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="background:#FBFAF6;border:1px solid #D9D4C8;border-radius:24px;padding:clamp(24px,3.4vw,40px);display:flex;flex-direction:column;gap:22px">
+          <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:14px;font-weight:600">What do you need?</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <sc-for list="{{ types }}" as="t" hint-placeholder-count="4">
+                <button type="button" onClick="{{ t.pick }}" style="all:unset;cursor:pointer;padding:8px 14px;border-radius:999px;font-size:14.5px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Name</span><input required="required" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none" style-focus="border-color:#4A6FA5"></input></label>
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Work email</span><input type="email" required="required" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none" style-focus="border-color:#4A6FA5"></input></label>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Organization</span><input style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none" style-focus="border-color:#4A6FA5"></input></label>
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Budget</span><select style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none"><option>Not sure yet</option><option>Under $25k</option><option>$25k–$100k</option><option>$100k–$250k</option><option>$250k+</option></select></label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Project details</span><textarea rows="5" required="required" placeholder="Goals, timeline, contract vehicle if any" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none;resize:vertical" style-focus="border-color:#4A6FA5"></textarea></label>
+          <button type="submit" style="all:unset;cursor:pointer;align-self:flex-start;background:#4A6FA5;color:#FFFFFF;padding:15px 26px;border-radius:999px;font-weight:600;font-size:16px" style-hover="background:#1B1A17">Send inquiry</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FBFAF6;border:1px solid #D9D4C8;border-radius:24px;padding:48px;display:flex;flex-direction:column;gap:14px;align-self:start">
+          <span style="font:400 44px/1 'Instrument Serif',serif">Thank you.</span>
+          <span style="font-size:17px;line-height:1.55;color:#5E5A52">We've got your inquiry and will reply within two business days.</span>
+          <button onClick="{{ reset }}" style="all:unset;cursor:pointer;font-weight:600;color:#4A6FA5;margin-top:8px">Send another →</button>
+        </div>
+      </sc-if>
+    </section>
+  </sc-if>
+  </main>
+
+  <footer style="background:#1B1A17;color:#F4F1EA">
+    <div style="max-width:1280px;margin:0 auto;padding:80px clamp(20px,4vw,56px) 40px;display:flex;flex-direction:column;gap:64px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+        <span style="font:400 clamp(40px,5.4vw,76px)/1 'Instrument Serif',serif;max-width:14ch">Have something to <em style="color:#A9BEDD">build</em>?</span>
+        <button onClick="{{ goContact }}" style="all:unset;cursor:pointer;background:#F4F1EA;color:#1B1A17;padding:16px 26px;border-radius:999px;font-weight:600;font-size:16px" style-hover="background:#A9BEDD">Send an inquiry</button>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:14px;color:#A9A396;border-top:1px solid #3A3833;padding-top:24px">
+        <span style="display:flex;align-items:center;gap:10px"><svg viewBox="0 0 100 100" style="width:18px;height:18px"><rect x="6" y="6" width="24" height="88" fill="#F4F1EA"></rect><rect x="70" y="6" width="24" height="88" fill="#F4F1EA"></rect><polygon points="30,66 70,30 70,54 30,90" fill="#A9BEDD"></polygon></svg>© 2026 Haively LLC</span>
+        <div style="display:flex;gap:24px;flex-wrap:wrap"><button onClick="{{ goServices }}" style="all:unset;cursor:pointer" style-hover="color:#F4F1EA">Services</button><button onClick="{{ goProducts }}" style="all:unset;cursor:pointer" style-hover="color:#F4F1EA">Products</button><button onClick="{{ goAbout }}" style="all:unset;cursor:pointer" style-hover="color:#F4F1EA">About</button><a href="mailto:hello@haively.com" style="color:#A9A396">hello@haively.com</a></div>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;services&quot;,&quot;products&quot;,&quot;about&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showProcurement&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { page: this.props.startPage ?? 'home', type: 'New build', sent: false };
+  heroL1 = 'Software,'; heroA = 'built '; heroB = 'properly'; heroC = '.';
+  componentDidMount() { this.startType(); }
+  componentWillUnmount() { clearInterval(this.typer); clearTimeout(this.pauseT); }
+  startType() {
+    clearInterval(this.typer); clearTimeout(this.pauseT);
+    const l1 = this.heroL1.length, l2 = (this.heroA + this.heroB + this.heroC).length;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { this.setState({ t1: l1, t2: l2, line2: true }); return; }
+    this.setState({ t1: 0, t2: 0, line2: false });
+    const run = (key, total, done) => {
+      this.typer = setInterval(() => this.setState(s => {
+        const n = (s[key] ?? 0) + 1;
+        if (n >= total) { clearInterval(this.typer); done && done(); }
+        return { [key]: n };
+      }), 85);
+    };
+    run('t1', l1, () => {
+      this.pauseT = setTimeout(() => {
+        this.setState({ line2: true });
+        this.pauseT = setTimeout(() => run('t2', l2), 120);
+      }, 900);
+    });
+  }
+  heroEl() {
+    const h = React.createElement, L1 = this.heroL1, A = this.heroA, B = this.heroB, C = this.heroC;
+    const t1 = this.state.t1 ?? 0, n = this.state.t2 ?? 0, line2 = this.state.line2;
+    const a = A.slice(0, n), b = B.slice(0, Math.max(0, n - A.length)), c = C.slice(0, Math.max(0, n - A.length - B.length));
+    const em = { color: '#4A6FA5' };
+    const cursor = h('span', { key: 'cur', 'aria-hidden': true, style: { display: 'inline-block', width: '.42em', height: '.72em', marginLeft: '.06em', background: '#4A6FA5', verticalAlign: '-.04em', animation: 'hvBlink 1.05s steps(1) infinite' } });
+    const cell = { gridArea: '1 / 1', display: 'flex', flexDirection: 'column' };
+    const ln = { minHeight: '.95em' };
+    return [
+      h('span', { key: 'ghost', 'aria-hidden': true, style: { ...cell, visibility: 'hidden' } },
+        h('span', { style: ln }, L1), h('span', { style: ln }, A, h('em', null, B), C, h('span', { style: { display: 'inline-block', width: '.48em' } }))),
+      h('span', { key: 'live', 'aria-hidden': true, style: cell },
+        h('span', { style: ln }, L1.slice(0, t1), line2 ? null : cursor),
+        h('span', { style: ln }, a, b ? h('em', { style: em }, b) : null, c, line2 ? cursor : null))
+    ];
+  }
+  go(p) { this.setState({ page: p }); window.scrollTo(0, 0); if (p === 'home') setTimeout(() => this.startType(), 0); }
+  renderVals() {
+    const { page, type, sent } = this.state;
+    const c = p => page === p ? '#4A6FA5' : '#1B1A17';
+    return {
+      heroType: this.heroEl(),
+      isHome: page === 'home', isServices: page === 'services', isProducts: page === 'products', isAbout: page === 'about', isContact: page === 'contact',
+      nav: { services: c('services'), products: c('products'), about: c('about') },
+      goHome: () => this.go('home'), goServices: () => this.go('services'), goProducts: () => this.go('products'), goAbout: () => this.go('about'), goContact: () => this.go('contact'),
+      showGov: this.props.showProcurement ?? true,
+      types: ['New build', 'Mobile app', 'Cloud / DevOps', 'Staff augmentation', 'Subcontract'].map(l => ({ label: l, pick: () => this.setState({ type: l }), bg: l === type ? '#1B1A17' : 'transparent', fg: l === type ? '#F4F1EA' : '#1B1A17', border: l === type ? '#1B1A17' : '#CFC9BC' })),
+      sent, notSent: !sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
 </body>
 </html>
