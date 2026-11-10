@@ -214,15 +214,19 @@
             </div>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
-            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Name</span><input required="required" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none" style-focus="border-color:#4A6FA5"></input></label>
-            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Work email</span><input type="email" required="required" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none" style-focus="border-color:#4A6FA5"></input></label>
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Name</span><input name="name" autocomplete="name" maxlength="120" required="required" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none" style-focus="border-color:#4A6FA5"></input></label>
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Work email</span><input name="email" type="email" autocomplete="email" maxlength="200" required="required" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none" style-focus="border-color:#4A6FA5"></input></label>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
-            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Organization</span><input style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none" style-focus="border-color:#4A6FA5"></input></label>
-            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Budget</span><select style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none"><option>Not sure yet</option><option>Under $25k</option><option>$25k–$100k</option><option>$100k–$250k</option><option>$250k+</option></select></label>
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Organization</span><input name="organization" autocomplete="organization" maxlength="200" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none" style-focus="border-color:#4A6FA5"></input></label>
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Budget</span><select name="budget" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none"><option>Not sure yet</option><option>Under $25k</option><option>$25k–$100k</option><option>$100k–$250k</option><option>$250k+</option></select></label>
           </div>
-          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Project details</span><textarea rows="5" required="required" placeholder="Goals, timeline, contract vehicle if any" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none;resize:vertical" style-focus="border-color:#4A6FA5"></textarea></label>
-          <button type="submit" style="all:unset;cursor:pointer;align-self:flex-start;background:#4A6FA5;color:#FFFFFF;padding:15px 26px;border-radius:999px;font-weight:600;font-size:16px" style-hover="background:#1B1A17">Send inquiry</button>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Project details</span><textarea name="message" rows="5" maxlength="5000" required="required" placeholder="Goals, timeline, contract vehicle if any" style="background:#FFFFFF;border:1px solid #CFC9BC;border-radius:12px;padding:12px 14px;font-size:16px;color:#1B1A17;outline:none;resize:vertical" style-focus="border-color:#4A6FA5"></textarea></label>
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none"></input>
+          <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+            <span role="alert" style="font-size:15px;line-height:1.5;color:#A3352B">{{ errorMsg }}</span>
+          </sc-if>
+          <button type="submit" disabled="{{ sending }}" style="all:unset;cursor:{{ submitCursor }};opacity:{{ submitOpacity }};align-self:flex-start;background:#4A6FA5;color:#FFFFFF;padding:15px 26px;border-radius:999px;font-weight:600;font-size:16px" style-hover="background:#1B1A17">{{ submitLabel }}</button>
         </form>
       </sc-if>
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
@@ -252,7 +256,9 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;services&quot;,&quot;products&quot;,&quot;about&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showProcurement&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { page: this.props.startPage ?? 'home', type: 'New build', sent: false };
+  state = { page: this.props.startPage ?? 'home', type: 'New build', sent: false, sending: false, error: '' };
+  // Web3Forms access key (public by design; it only lets this form send to your inbox).
+  formKey = '74dc8c52-1367-44a1-87b2-f2faa74d32ef';
   heroL1 = 'Software,'; heroA = 'built '; heroB = 'properly'; heroC = '.';
   componentDidMount() { this.startType(); }
   componentWillUnmount() { clearInterval(this.typer); clearTimeout(this.pauseT); }
@@ -291,6 +297,38 @@ class Component extends DCLogic {
         h('span', { style: ln }, a, b ? h('em', { style: em }, b) : null, c, line2 ? cursor : null))
     ];
   }
+  async sendInquiry(e) {
+    e.preventDefault();
+    if (this.state.sending) return;
+    const form = e.target, fd = new FormData(form);
+    if (fd.get('botcheck')) { this.setState({ sent: true }); return; }
+    this.setState({ sending: true, error: '' });
+    const v = k => String(fd.get(k) || '').trim();
+    const payload = {
+      access_key: this.formKey,
+      subject: 'New inquiry from haively.com: ' + this.state.type,
+      from_name: 'haively.com',
+      name: v('name'), email: v('email'),
+      organization: v('organization') || '(none)',
+      project_type: this.state.type,
+      budget: v('budget'),
+      message: v('message')
+    };
+    try {
+      const r = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.success) throw new Error(j.message || ('HTTP ' + r.status));
+      form.reset();
+      this.setState({ sending: false, sent: true });
+    } catch (err) {
+      console.error('Inquiry failed:', err);
+      this.setState({ sending: false, error: "Your inquiry didn't go through. Please try again, or email hello@haively.com." });
+    }
+  }
   go(p) { this.setState({ page: p }); window.scrollTo(0, 0); if (p === 'home') setTimeout(() => this.startType(), 0); }
   renderVals() {
     const { page, type, sent } = this.state;
@@ -303,8 +341,13 @@ class Component extends DCLogic {
       showGov: this.props.showProcurement ?? true,
       types: ['New build', 'Mobile app', 'Cloud / DevOps', 'Staff augmentation', 'Subcontract'].map(l => ({ label: l, pick: () => this.setState({ type: l }), bg: l === type ? '#1B1A17' : 'transparent', fg: l === type ? '#F4F1EA' : '#1B1A17', border: l === type ? '#1B1A17' : '#CFC9BC' })),
       sent, notSent: !sent,
-      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
-      reset: () => this.setState({ sent: false })
+      sending: this.state.sending,
+      submitLabel: this.state.sending ? 'Sending…' : 'Send inquiry',
+      submitCursor: this.state.sending ? 'default' : 'pointer',
+      submitOpacity: this.state.sending ? 0.6 : 1,
+      hasError: !!this.state.error, errorMsg: this.state.error,
+      submit: e => this.sendInquiry(e),
+      reset: () => this.setState({ sent: false, error: '' })
     };
   }
 }
